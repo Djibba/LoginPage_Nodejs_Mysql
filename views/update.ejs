@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>UPDATE/DELETE CONTACT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/semantic.min.css" rel="stylesheet">
+        <style>
+            .main.container{
+                margin-top: 7em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ui main container" >
+
+            <% if(locals.middle &&  locals.middle.error) { %> 
+                <div class="ui negative message">
+                    <%= middle.error %> 
+                </div>
+            <% } %>
+            <% if(locals.middle &&  locals.middle.success) { %> 
+                <div class="ui positive message">
+                    <%= middle.success %> 
+                </div>
+            <% } %>
+
+            <div class="ui fixed inverted menu">
+                <a href="/" class="header item">ACCUEIL</a>
+                <a href="/create" class="header item">CREATE</a>
+                <a href="/read" class="header item">READ</a>
+                <a href="/update" class="header item">UPDATE / DELETE</a>
+            </div>
+             <form action="/delete/<%= contact.id %>"  method="post" class="ui form">
+                <div class="ui comments">
+                    <h3 class="ui dividing heager" style="font-size: 28px">Contact n° <%= contact.id %> <button type="submit" class="ui blue labeled submit icon button" style="font-size: 15px; text-align: center;margin-left: 150px"><i class="icon edit" ></i>Supprimer</button></h3>
+                </div>
+            </form>
+
+             <form action="/update/<%= contact.id %>"  method="post" class="ui form">
+                <div class="field ">
+                    <label for="nom">Entrer le nouveau nom </label>
+                    <input type="text"  name="nom" id="nom" value="<%= contact.nom%>"/>
+                </div>
+                <div class="field">
+                    <label for="prenom">Entrer le nouveau prénom </label>
+                    <input type="text"  name="prenom" id="prenom" value="<%= contact.prenom%>"/>
+                </div>
+                <div class="field">
+                    <label for="numero">Entrer le nouveau numero <span class="required">*</span></label>
+                    <input type="int"  name="numero" id="numero" value="<%= contact.numero%>"/>
+                </div>
+                <div class="field">
+                    <label for="email">Entrer le nouveau mail</label>
+                    <input type="email"  name="email" id="email" value="<%= contact.email%>"/>
+                </div>
+                <div class="field">
+                    <label for="adresse">Entrer le nouveau adresse</label>
+                    <input type="text"  name="adresse" id="adresse" value="<%= contact.adresse%>"/>
+                </div>
+                <button type="submit" class="ui blue labeled submit icon button" id="validate"><i class="icon edit" ></i>Modifier</button>        
+            </form>
+            <br>
+            <br>
+            <a href="/read"><button type="submit" class="ui blue labeled submit icon button"><i class="icon edit" ></i>Retourner à la liste</button></a>
+        </div>
+         <script>
+            function validateEmail(email) {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            function validate() {
+                var $result = $("#result");
+                var email = $("#email").val();
+                $result.text("");
+
+                if (validateEmail(email)) {
+                    $result.text(email + " is valid :)");
+                    $result.css("color", "green");
+                } else {
+                    $result.text(email + " is not valid :(");
+                    $result.css("color", "red");
+                }
+                return false;
+            }
+
+            $("#validate").on("click", validate);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>READ CONTACT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/semantic.min.css" rel="stylesheet">
+        <style>
+            .main.container{
+                margin-top: 7em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ui main container" >
+            <div class="ui fixed inverted menu">
+                <a href="/" class="header item">ACCUEIL</a>
+                <a href="/create" class="header item">CREATE</a>
+                <a href="/read" class="header item">READ</a>
+                <a href="/update" class="header item">UPDATE / DELETE</a>
+            </div>
+
+            <form action="/read" method="post" class="ui form">
+                <div class="ui comments">
+                    <h3 class="ui dividing heager" style="font-size: 38px">Listes des Contacts</h3>
+                    <% for (contact of contact) {%>
+                        <div class="comment">
+                            <div class="content " style="font-size: 20px;">
+                                <a href="/update/<%= contact.id%>" style="text-color: black">
+                                <%= contact.id+" Nom: "+ contact.nom%>
+                                <%= "|| Prenom: "+ contact.prenom%>
+                                <%= "|| Numero: "+ contact.numero%>
+                                <%= "|| Email: "+ contact.email%>
+                                <%= "|| Adresse: "+ contact.adresse%>
+                                </a>
+                            </div>
+                        </div>
+                    <% } %>
+                    <h6>Cliquez sur un contact pour le modifier ou le supprimer</h6>   
+                </div>
+
+                <button type="submit" class="ui blue labeled submit icon button"><i class="icon edit" ></i>Actualiser</button>    
+            </form>
+        </div>
+    </body>
+</html>

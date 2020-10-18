@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>UPDATE CONTACT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/semantic.min.css" rel="stylesheet">
+        <style>
+            .main.container{
+                margin-top: 7em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ui main container" >
+
+            <% if(locals.middle &&  locals.middle.error) { %> 
+                <div class="ui negative message">
+                    <%= middle.error %> 
+                </div>
+            <% } %>
+            <% if(locals.middle &&  locals.middle.success) { %> 
+                <div class="ui positive message">
+                    <%= middle.success %> 
+                </div>
+            <% } %>
+
+            <div class="ui fixed inverted menu">
+                <a href="/" class="header item">ACCUEIL</a>
+                <a href="/create" class="header item">CREATE</a>
+                <a href="/read" class="header item">READ</a>
+                <a href="/update" class="header item">UPDATE / DELETE</a>
+            </div>
+
+            <div class="ui comments">
+                <h3 class="ui dividing heager" style="font-size: 50px; text-align: center;margin-left: 150px">Allez à la liste des contacts et cliquez sur un contact pour le modifier ou le supprimer</h3>
+            </div>
+            <br>
+            <br>
+            <a href="/read"><button type="submit" class="ui blue labeled submit icon button" style="font-size: 30px; text-align: center;margin-left: 250px"><i class="icon edit" ></i>Aller à la liste</button></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "name": "crud_nodejs_mysql",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.3",
+        "save": "^2.4.0",
+        "session": "^0.1.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC"
+}
